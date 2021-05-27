@@ -8,7 +8,7 @@
 struct ListGraph: IGraph {
     ListGraph(size_t);
     ListGraph( const IGraph &);
-    virtual ~ListGraph();
+    virtual ~ListGraph() = default;
     int VerticesCount() const override ;
     void AddEdge(int from, int to) override;
     std::vector<int> GetNextVertices(int vertex) const override;
