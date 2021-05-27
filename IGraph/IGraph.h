@@ -1,5 +1,6 @@
 #ifndef ALGOS_GRAPH_IGRAPH_H
 #define ALGOS_GRAPH_IGRAPH_H
+#include <vector>
 
 struct IGraph {
     virtual ~IGraph() {}
