@@ -14,4 +14,15 @@ struct IGraph {
     virtual std::vector<int> GetPrevVertices(int vertex) const = 0;
 };
 
+template <class Callback>
+void dfs_aux( const IGraph&, std::vector<bool> &, int , Callback callback);
+
+template <class Callback>
+void dfs( const IGraph&, Callback callback);
+
+
+template <class Callback>
+void bfs( const IGraph&, Callback callback);
+
+
 #endif //ALGOS_GRAPH_IGRAPH_H

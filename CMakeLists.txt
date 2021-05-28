@@ -3,8 +3,8 @@ project(algos_graph)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(algos_graph main.cpp)
+add_executable(algos_graph main.cpp )
 
-add_library(ListGraph ./ListGraph/ListGraph.cpp)
+add_library(ListGraph ./ListGraph/ListGraph.cpp IGraph/IGraph_funcs.cpp)
 
 target_link_libraries(algos_graph ListGraph)
