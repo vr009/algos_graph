@@ -3,7 +3,7 @@ project(algos_graph)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(algos_graph main.cpp )
+add_executable(algos_graph main.cpp MatrixGraph/MatrixGraph.cpp MatrixGraph/MatrixGraph.h)
 
 add_library(ListGraph ./ListGraph/ListGraph.cpp IGraph/IGraph_funcs.cpp)
 
