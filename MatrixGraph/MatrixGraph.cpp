@@ -17,10 +17,14 @@ MatrixGraph::MatrixGraph(const IGraph &IG) : MatrixGraph(IG.VerticesCount()) {
 }
 
 void MatrixGraph::AddEdge(int from, int to) {
-    nodes[from][to] = true;
+    if(from < count && to < count)
+        nodes[from][to] = true;
 }
 
 std::vector<int> MatrixGraph::GetNextVertices(int vertex) const {
+    if (vertex >= count)
+        return std::vector<int>(0);
+
     std::vector<int> out;
     for(size_t v = 0; v < count; ++v){
         if(nodes[vertex][v])
@@ -30,8 +34,10 @@ std::vector<int> MatrixGraph::GetNextVertices(int vertex) const {
 }
 
 std::vector<int> MatrixGraph::GetPrevVertices(int vertex) const {
-    std::vector<int> out;
+    if (vertex >= count)
+        return std::vector<int>(0);
 
+    std::vector<int> out;
     for(size_t v = 0; v < count; ++v){
         if (nodes[v][vertex])
             out.push_back(v);

@@ -6,7 +6,8 @@ ListGraph::ListGraph( size_t count ): count(count) {
 }
 
 void ListGraph::AddEdge( int from, int to ) {
-    nodes[from].push_back(to);
+    if (from < count && to < count)
+        nodes[from].push_back(to);
 }
 
 ListGraph::ListGraph( const IGraph &IG ) {
@@ -17,10 +18,16 @@ ListGraph::ListGraph( const IGraph &IG ) {
 }
 
 std::vector<int> ListGraph::GetNextVertices( int vertex ) const {
+    if (vertex >= count)
+        return std::vector<int>(0);
+
     return nodes[vertex];
 }
 
 std::vector<int> ListGraph::GetPrevVertices( int vertex ) const {
+    if (vertex >= count)
+        return std::vector<int>(0);
+
     std::vector <int> out;
     for(size_t i = 0; i < count; ++i){
         std::for_each(nodes[i].begin(), nodes[i].end(), [&vertex, &out, &i](int a){ if (a == vertex) out.push_back(i); });
