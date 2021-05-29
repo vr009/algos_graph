@@ -22,12 +22,18 @@ ArcGraph::ArcGraph( const IGraph &IG )  {
 }
 
 std::vector<int> ArcGraph::GetNextVertices( int vertex ) const {
+    if (vertex >= count)
+        return std::vector<int>(0);
+
     std::vector<int> out;
     std::for_each(nodes.begin(), nodes.end(), [&](std::pair<int, int> a) { if(a.first == vertex){out.push_back(a.second);}; });
     return out;
 }
 
 std::vector<int> ArcGraph::GetPrevVertices( int vertex ) const {
+    if (vertex >= count)
+        return std::vector<int>(0);
+
     std::vector<int> out;
     std::for_each(nodes.begin(), nodes.end(), [&](std::pair<int, int> a) { if(a.second == vertex){out.push_back(a.first);}; });
     return out;
