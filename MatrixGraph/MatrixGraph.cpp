@@ -12,7 +12,6 @@ MatrixGraph::MatrixGraph(const IGraph &IG) : MatrixGraph(IG.VerticesCount()) {
     for(size_t i = 0; i < count; ++i){
         for(auto v: IG.GetNextVertices(i)){
             AddEdge( i , v );
-            AddEdge(v, i);
         }
     }
 }

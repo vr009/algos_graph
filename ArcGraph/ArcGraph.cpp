@@ -9,10 +9,11 @@ void ArcGraph::AddEdge( int from, int to ) {
     auto p = std::make_pair(from, to);
     if ( offset < count ) nodes.insert(nodes.begin() + offset, p);
     offset++;
+
 }
 
-ArcGraph::ArcGraph( const IGraph &IG ) : ArcGraph(IG.VerticesCount()) {
-
+ArcGraph::ArcGraph( const IGraph &IG )  {
+    count = IG.VerticesCount();
     for ( size_t i = 0; i < count; ++i){
         for(auto a: IG.GetNextVertices(i)){
             AddEdge(i, a);
