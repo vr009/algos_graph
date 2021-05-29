@@ -12,13 +12,13 @@ MatrixGraph::MatrixGraph(const IGraph &IG) {
     for(size_t i = 0; i < count; ++i){
         for(auto v: IG.GetNextVertices(i)){
             AddEdge( i , v );
+            AddEdge(v, i);
         }
     }
 }
 
 void MatrixGraph::AddEdge(int from, int to) {
     nodes[from][to] = true;
-    nodes[to][from] = true;
 }
 
 std::vector<int> MatrixGraph::GetNextVertices(int vertex) const {
