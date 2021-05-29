@@ -21,6 +21,7 @@ struct ArcGraph: IGraph {
 private:
     std::vector<std::pair<int, int>> nodes;
     size_t count;
+    size_t offset = 0;
 };
 
 #endif //ALGOS_GRAPH_ARCGRAPH_H

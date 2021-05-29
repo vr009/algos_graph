@@ -2,18 +2,21 @@
 #include <algorithm>
 
 ArcGraph::ArcGraph( size_t count ): count(count) {
+    nodes.resize(count);
 }
 
 void ArcGraph::AddEdge( int from, int to ) {
     auto p = std::make_pair(from, to);
-    nodes.push_back(p);
+    if ( offset < count ) nodes.insert(nodes.begin() + offset, p);
+    offset++;
 }
 
-ArcGraph::ArcGraph( const IGraph &IG ) {
-    nodes.resize( IG.VerticesCount() );
+ArcGraph::ArcGraph( const IGraph &IG ) : ArcGraph(IG.VerticesCount()) {
+
     for ( size_t i = 0; i < count; ++i){
-        auto sub_vec = IG.GetNextVertices(i);
-        std::for_each(sub_vec.begin(), sub_vec.end(), [&]( int a){ nodes.push_back(std::make_pair(i, a)); });
+        for(auto a: IG.GetNextVertices(i)){
+            AddEdge(i, a);
+        }
     }
 }
 

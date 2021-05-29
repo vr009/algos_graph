@@ -6,10 +6,12 @@ SetGraph::SetGraph(size_t count) : count(count) {
 }
 
 
-SetGraph::SetGraph(const IGraph &IG) {
-    count = IG.VerticesCount();
+SetGraph::SetGraph(const IGraph &IG) : SetGraph(IG.VerticesCount()) {
     for(size_t i = 0; i < IG.VerticesCount(); ++i){
-        std::for_each(IG.GetNextVertices(i).begin(), IG.GetNextVertices(i).end(), [&]( int a ){ AddEdge( i, a ); });
+        for( auto a : IG.GetNextVertices(i)){
+            AddEdge( i , a);
+        }
+        //std::for_each(IG.GetNextVertices(i).begin(), IG.GetNextVertices(i).end(), [&]( int a ){ AddEdge( i, a ); });
     }
 }
 
